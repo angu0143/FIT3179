@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Relationship between socioeconomic advantage (SEIFA score) and youth offence rates across Australian states.",
+    "width": 600,
+  "height": 400,
+  "title": {
+    "text": "Youth Offence Rate vs. Socioeconomic Advantage (by State)",
+    "subtitle": "Higher SEIFA = More Advantage | Source: ABS SEIFA & AIHW Youth Justice",
+  "offset": 24,            
+  "subtitlePadding": 6
+},
+  "data": {
+    "url": "https://raw.githubusercontent.com/angu0143/FIT3179/main/socioeconomic_offencerate.csv"
+  },
+  "mark": {
+    "type": "circle",
+    "size": 150,
+    "opacity": 0.8
+  },
+  "encoding": {
+    "x": {
+      "field": "Average_SEIFA_Score",
+      "type": "quantitative",
+      "title": "Average SEIFA Score",
+      "axis": {
+        "titlePadding": 20
+      }
+    },
+    "y": {
+      "field": "Youth_Offence_Rate",
+      "type": "quantitative",
+      "title": "Youth Offence Rate (per 100,000 youths)",
+      "axis": {
+        "titlePadding": 20
+      }
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State/Territory"
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal", "title":"State/Territory:"},
+      {"field": "Average_SEIFA_Score", "type": "quantitative","title": "Average SEIFA Score:"},
+      {"field": "Youth_Offence_Rate", "type": "quantitative", "title": "Youth Offence Rate:"}
+    ]
+  }
+}

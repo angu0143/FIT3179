@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Youth Offender Rates by Age and Sex (Australia, between 2022 - 2023)",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/angu0143/FIT3179/main/offence_by_age_and_sex.csv"
+  },
+  "mark": {"type": "line", "point": true},
+  "encoding": {
+    "x": {
+      "field": "age",
+      "type": "ordinal",
+      "title": "Age (years)",
+      "axis": {
+        "labelAngle": 0,
+        "titlePadding": 20
+      }
+    },
+    "y": {
+      "field": "offender_rate",
+      "type": "quantitative",
+      "title": "Offender rate (per 100,000)",
+      "axis": {
+        "labelAngle": 0,
+        "titlePadding": 20
+      }
+    },
+    "color": {
+      "field": "sex",
+      "type": "nominal",
+      "title": "Sex",
+      "scale": {
+        "domain": ["Male", "Female"], 
+        "range": ["blue", "red"] 
+      }
+    },
+    "tooltip": [
+      {"field": "age", "type": "ordinal", "title": "Age"},
+      {"field": "sex", "type": "nominal", "title": "Sex"},
+      {"field": "offender_rate", "type": "quantitative", "format": ".1f", "title": "Offender Rate"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 13}
+  }
+}

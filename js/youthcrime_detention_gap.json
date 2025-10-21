@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 400,  "data": {
+    "url": "https://raw.githubusercontent.com/angu0143/FIT3179/main/youthcrime_Aboriginal_rates_vs_non-indigenous_state.csv"
+  },
+  "title": {
+    "text": "Detention rates (per 10,000) between Aboriginal and Torres Strait Islander and Non-Indigenous Youth by states.",
+    "fontSize": 16,
+    "fontWeight": "bold",
+    "anchor": "start",
+    "offset": 28
+  },
+  "transform": [
+    {
+      "fold": [
+        "aboriginal_and_torres_strait_islander",
+        "non-indigenous"
+      ],
+      "as": ["group_raw", "rate"]
+    },
+    {
+      "calculate": "datum.group_raw == 'aboriginal_and_torres_strait_islander' ? 'Aboriginal & Torres Strait Islander' : 'Non-Indigenous'",
+      "as": "group"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "sort": "-x",
+      "title": "State",
+      "axis": {
+        "titlePadding": 15
+      }
+    },
+    "x": {
+      "field": "rate",
+      "type": "quantitative",
+      "title": "Detention rate (per 10,000)",
+      "axis": {
+        "titlePadding": 15
+      }
+    },
+    "color": {
+      "field": "group",
+      "type": "nominal",
+      "title": "Population group",
+      "legend": {
+        "labelLimit": 400
+      },
+      "scale": {
+        "domain": [
+          "Aboriginal & Torres Strait Islander",
+          "Non-Indigenous"
+        ],
+        "range": ["#d73027", "#4575b4"]
+      }
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title":"State:"},
+      {"field": "group", "type": "nominal", "title": "Group:"},
+      {"field": "rate", "type": "quantitative", "title": "Rate per 10,000:"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 14}
+  }
+}

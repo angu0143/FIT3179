@@ -1,0 +1,84 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Youth Crime by State between 2022 to 2023",
+  "width": 700,
+  "height": 520,
+  "projection": {"type": "mercator"},
+
+  "params": [
+    {
+      "name": "selOffence",
+      "value": "Theft",
+      "bind": {
+        "input": "select",
+        "name": "Offence: ",
+        "options": [
+          "Theft",
+          "Acts intended to cause injury",
+          "Sexual assault and related offences",
+          "Unlawful entry with intent",
+          "Public order offences",
+          "Illicit drug offences",
+          "Fraud/deception",
+          "Robbery/extortion",
+          "Weapons/explosives",
+          "Abduction/harassment",
+          "Property damage and environmental pollution",
+          "Offences against justice",
+          "Miscellaneous offences",
+          "Homicide and related offences",
+          "Dangerous/negligent acts",
+          "Fare evasion"
+        ]
+      }
+    }
+  ],
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/angu0143/FIT3179/main/js/STE_2016_AUST.json",
+    "format": {"type": "topojson", "feature": "STE_2016_AUST"}
+  },
+
+  "transform": [
+    { "calculate": "datum.properties.STE_NAME16 + '|' + selOffence", "as": "state_offence" },
+    {
+      "lookup": "state_offence",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/angu0143/FIT3179/main/youth_data_by_offence.csv"
+        },
+        "key": "state_offence",
+        "fields": ["youth_offenders"]
+      }
+    },
+    { "calculate": "toNumber(datum.youth_offenders)", "as": "value" },
+    { "window": [{"op": "max", "field": "value", "as": "maxValue"}], "frame": [null, null] }
+  ],
+
+  "mark": {"type": "geoshape"},
+
+  "encoding": {
+    "color": {
+      "condition": {
+        "test": "isValid(datum.value)",
+        "field": "value",
+        "type": "quantitative",
+        "title": "Youth offenders (count)",
+        "scale": {"scheme": "blues"}
+      },
+      "value": "#eeeeee"
+    },
+    "stroke": {"value": "#1f2937"},
+    "strokeWidth": {
+      "condition": [{"test": "datum.value === datum.maxValue", "value": 2.5}],
+      "value": 0.5
+    },
+    "tooltip": [
+      {"field": "properties.STE_NAME16", "type": "nominal", "title": "State/Territory"},
+      {"title": "Offence", "value": {"expr": "selOffence"}},
+      {"field": "value", "type": "quantitative", "format": ",.0f", "title": "Offenders"}
+    ]
+  },
+
+  "config": {"view": {"stroke": null}}
+}
