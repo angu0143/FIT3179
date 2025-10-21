@@ -5,48 +5,56 @@ Homicide and related offences,Queensland,20,Queensland|Homicide and related offe
 Homicide and related offences,South Australia,0,South Australia|Homicide and related offences
 Homicide and related offences,Victoria,16,Victoria|Homicide and related offences
 Homicide and related offences,Western Australia,10,Western Australia|Homicide and related offences
+Homicide and related offences,Australian Capital Territory,0,Australian Capital Territory|Homicide and related offences
 Acts intended to cause injury,New South Wales,4183,New South Wales|Acts intended to cause injury
 Acts intended to cause injury,Northern Territory,221,Northern Territory|Acts intended to cause injury
 Acts intended to cause injury,Queensland,2518,Queensland|Acts intended to cause injury
 Acts intended to cause injury,South Australia,611,South Australia|Acts intended to cause injury
 Acts intended to cause injury,Victoria,2341,Victoria|Acts intended to cause injury
 Acts intended to cause injury,Western Australia,1551,Western Australia|Acts intended to cause injury
+Acts intended to cause injury,Australian Capital Territory,139,Australian Capital Territory|Acts intended to cause injury
 Sexual assault and related offences,New South Wales,237,New South Wales|Sexual assault and related offences
 Sexual assault and related offences,Northern Territory,10,Northern Territory|Sexual assault and related offences
 Sexual assault and related offences,Queensland,668,Queensland|Sexual assault and related offences
 Sexual assault and related offences,South Australia,58,South Australia|Sexual assault and related offences
 Sexual assault and related offences,Victoria,179,Victoria|Sexual assault and related offences
 Sexual assault and related offences,Western Australia,235,Western Australia|Sexual assault and related offences
+Sexual assault and related offences,Australian Capital Territory,7,Australian Capital Territory|Sexual assault and related offences
 Dangerous/negligent acts,New South Wales,6,New South Wales|Dangerous/negligent acts
 Dangerous/negligent acts,Northern Territory,0,Northern Territory|Dangerous/negligent acts
 Dangerous/negligent acts,Queensland,128,Queensland|Dangerous/negligent acts
 Dangerous/negligent acts,South Australia,5,South Australia|Dangerous/negligent acts
 Dangerous/negligent acts,Victoria,35,Victoria|Dangerous/negligent acts
 Dangerous/negligent acts,Western Australia,39,Western Australia|Dangerous/negligent acts
+Dangerous/negligent acts,Australian Capital Territory,0,Australian Capital Territory|Dangerous/negligent acts
 Abduction/harassment,New South Wales,164,New South Wales|Abduction/harassment
 Abduction/harassment,Northern Territory,0,Northern Territory|Abduction/harassment
 Abduction/harassment,Queensland,8,Queensland|Abduction/harassment
 Abduction/harassment,South Australia,23,South Australia|Abduction/harassment
 Abduction/harassment,Victoria,169,Victoria|Abduction/harassment
 Abduction/harassment,Western Australia,185,Western Australia|Abduction/harassment
+Abduction/harassment,Australian Capital Territory,7,Australian Capital Territory|Abduction/harassment
 Robbery/extortion,New South Wales,280,New South Wales|Robbery/extortion
 Robbery/extortion,Northern Territory,123,Northern Territory|Robbery/extortion
 Robbery/extortion,Queensland,576,Queensland|Robbery/extortion
 Robbery/extortion,South Australia,94,South Australia|Robbery/extortion
 Robbery/extortion,Victoria,465,Victoria|Robbery/extortion
 Robbery/extortion,Western Australia,359,Western Australia|Robbery/extortion
+Robbery/extortion,Australian Capital Territory,22,Australian Capital Territory|Robbery/extortion
 Unlawful entry with intent,New South Wales,576,New South Wales|Unlawful entry with intent
 Unlawful entry with intent,Northern Territory,229,Northern Territory|Unlawful entry with intent
 Unlawful entry with intent,Queensland,1432,Queensland|Unlawful entry with intent
 Unlawful entry with intent,South Australia,175,South Australia|Unlawful entry with intent
 Unlawful entry with intent,Victoria,414,Victoria|Unlawful entry with intent
 Unlawful entry with intent,Western Australia,1004,Western Australia|Unlawful entry with intent
+Unlawful entry with intent,Australian Capital Territory,14,Australian Capital Territory|Unlawful entry with intent
 Theft,New South Wales,1584,New South Wales|Theft
 Theft,Northern Territory,64,Northern Territory|Theft
 Theft,Queensland,1764,Queensland|Theft
 Theft,South Australia,281,South Australia|Theft
 Theft,Victoria,1304,Victoria|Theft
 Theft,Western Australia,1088,Western Australia|Theft
+Theft,Australian Capital Territory,51,Australian Capital Territory|Theft
 Fare evasion,New South Wales,7443,New South Wales|Fare evasion
 Fare evasion,Queensland,35,Queensland|Fare evasion
 Fare evasion,South Australia,46,South Australia|Fare evasion
@@ -57,39 +65,46 @@ Fraud/deception,Queensland,130,Queensland|Fraud/deception
 Fraud/deception,South Australia,13,South Australia|Fraud/deception
 Fraud/deception,Victoria,165,Victoria|Fraud/deception
 Fraud/deception,Western Australia,71,Western Australia|Fraud/deception
+Fraud/deception,Australian Capital Territory,6,Australian Capital Territory|Fraud/deception
 Illicit drug offences,New South Wales,667,New South Wales|Illicit drug offences
-Illicit drug offences,Northern Territory,17,Northern Territory|Illicit drug offences
+Illicit drug offences,Northern Territory,17,Northern Territory|Illicit drug offences    
 Illicit drug offences,Queensland,1490,Queensland|Illicit drug offences
 Illicit drug offences,South Australia,353,South Australia|Illicit drug offences
 Illicit drug offences,Victoria,289,Victoria|Illicit drug offences
 Illicit drug offences,Western Australia,471,Western Australia|Illicit drug offences
+Illicit drug offences,Australian Capital Territory,10,Australian Capital Territory|Illicit drug offences
 Weapons/explosives,New South Wales,187,New South Wales|Weapons/explosives
 Weapons/explosives,Northern Territory,30,Northern Territory|Weapons/explosives
 Weapons/explosives,Queensland,205,Queensland|Weapons/explosives
 Weapons/explosives,South Australia,156,South Australia|Weapons/explosives
 Weapons/explosives,Victoria,456,Victoria|Weapons/explosives
 Weapons/explosives,Western Australia,159,Western Australia|Weapons/explosives
+Weapons/explosives,Australian Capital Territory,26,Australian Capital Territory|Weapons/explosives
 Property damage and environmental pollution,New South Wales,716,New South Wales|Property damage and environmental pollution
 Property damage and environmental pollution,Northern Territory,13,Northern Territory|Property damage and environmental pollution
 Property damage and environmental pollution,Queensland,704,Queensland|Property damage and environmental pollution
 Property damage and environmental pollution,South Australia,133,South Australia|Property damage and environmental pollution
 Property damage and environmental pollution,Victoria,725,Victoria|Property damage and environmental pollution
 Property damage and environmental pollution,Western Australia,498,Western Australia|Property damage and environmental pollution
+Property damage and environmental pollution,Australian Capital Territory,21,Australian Capital Territory|Property damage and environmental pollution
 Public order offences,New South Wales,1569,New South Wales|Public order offences
 Public order offences,Northern Territory,29,Northern Territory|Public order offences
 Public order offences,Queensland,692,Queensland|Public order offences
 Public order offences,South Australia,186,South Australia|Public order offences
 Public order offences,Victoria,530,Victoria|Public order offences
 Public order offences,Western Australia,452,Western Australia|Public order offences
+Public order offences,Australian Capital Territory,24,Australian Capital Territory|Public order offences
 Offences against justice,New South Wales,177,New South Wales|Offences against justice
 Offences against justice,Northern Territory,3,Northern Territory|Offences against justice
 Offences against justice,Queensland,111,Queensland|Offences against justice
 Offences against justice,South Australia,29,South Australia|Offences against justice
 Offences against justice,Victoria,107,Victoria|Offences against justice
 Offences against justice,Western Australia,112,Western Australia|Offences against justice
+Offences against justice,Australian Capital Territory,3,Australian Capital Territory|Offences against justice
 Miscellaneous offences,New South Wales,378,New South Wales|Miscellaneous offences
 Miscellaneous offences,Northern Territory,0,Northern Territory|Miscellaneous offences
 Miscellaneous offences,Queensland,37,Queensland|Miscellaneous offences
 Miscellaneous offences,South Australia,27,South Australia|Miscellaneous offences
 Miscellaneous offences,Victoria,471,Victoria|Miscellaneous offences
 Miscellaneous offences,Western Australia,46,Western Australia|Miscellaneous offences
+Miscellaneous offences,Australian Capital Territory,0,Australian Capital Territory|Miscellaneous offences
