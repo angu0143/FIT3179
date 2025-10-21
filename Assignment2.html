@@ -1,105 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>Youth Crime in Australia</title>
 
-  <!-- Vega libs (v5 for Vega & Vega-Lite, v6 for embed) -->
+  <!-- Vega libraries -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-  <!-- Optional: PureCSS + simple styling -->
+  <!-- PureCSS for layout grid -->
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" />
+
   <style>
-    * { box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background:#f3f4f6; }
-    .page { max-width: 900px; margin: 0 auto; background:#fff; padding: 40px; }
-    h1 { margin-top: 0; }
-    .vis-container { width: 100%; }
-    .section { margin: 32px 0; }
+    * {
+      box-sizing: border-box;
+    }
+
+    /*-- Page layout --*/
+    body {
+      font-family: Arial, sans-serif;
+      background: #b3e4f2;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 40px;
+    }
+
+/* --- Metadata --- */
+    .credit-box {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 25px 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 60px;
+    }
+
+    .credit-box h3 {
+      font-size: 1.4em;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .credit-box h4 {
+      font-size: 1.2em;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .credit-box p {
+      margin: 6px 0;
+      font-size: 1.05em;
+      line-height: 1.6;
+    }
+
+    .credit-box ul {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 10px;
+    }
+
+    .credit-box li {
+      margin: 5px 0;
+    }
+
+    .credit-box a {
+      color: #004aad;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .credit-box a:hover {
+      text-decoration: underline;
+    }
+
+    /* Decorative page break */
+    .page-break {
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, #004aad, #00b4d8, #004aad);
+      margin: 80px 0 50px 0;
+      border-radius: 3px;
+    }
+
+    /* Heading fonting and poisitons */
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      font-weight: 800;
+      margin: 10px 0 30px 0;
+    }
+
+    h2,
+    h3 {
+      font-size: 1.6em;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    p {
+      font-size: 1.05em;
+      line-height: 1.7;
+      text-align: justify;
+      margin-bottom: 1em;
+    }
+
+    .section {
+      margin: 60px 0;
+    }
+
+    /* Map centering */
+    .map-wrapper {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    #vis_map>.vega-embed {
+      margin: 0 auto !important;
+    }
+
+    #vis_map .vega-bindings {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      gap: 6px;
+    }
+
+    #vis_map {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Making text into two columns */
+    .two-column-text {
+      display: flex;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .two-column-text div {
+      flex: 1;
+    }
+
+    /* LINE CHART layout */
+    .line-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      column-gap: 40px;
+      align-items: start;
+    }
+
+    .line-two-col h3 {
+      grid-column: 1 / -1;
+      margin-bottom: 25px;
+    }
+
+    .line-text {
+      font-size: 1.05em;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    .line-viz {
+      min-width: 0;
+    }
+
+    #vis_line,
+    #vis_line .vega-embed,
+    #vis_line svg,
+    #vis_line canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    /* STACKED BAR layout */
+    .chart-text-container {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      column-gap: 40px;
+      align-items: start;
+      margin-top: 40px;
+    }
+
+    .chart {
+      width: 100%;
+    }
+
+    #vis_bar,
+    #vis_bar .vega-embed,
+    #vis_bar svg,
+    #vis_bar canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    /* Scatter Plot Section - Centered like map */
+    .scatter-wrapper {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      margin: 40px 0;
+    }
+
+    #vis_scatter {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Responsive Fix */
+    @media (max-width: 900px) {
+      .two-column-text,
+      .line-two-col,
+      .chart-text-container {
+        display: block;
+      }
+
+      .line-viz,
+      .chart {
+        margin-top: 30px;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="page">
     <!-- Title -->
-    <div class="pure-g section">
-      <div class="pure-u-1">
-        <h1>Youth Crime in Australia</h1>
+    <h1>Youth Crime in Australia</h1>
+
+    <!-- Introduction -->
+    <div class="section">
+      <h2>Introduction</h2>
+      <p>
+        This dashboard visualises youth crime in Australia, focusing on how crime rates vary across different states and offence categories. Understanding patterns of youth offending is critical for policymakers, researchers, and communities who aim to address the underlying social, economic, and cultural factors contributing to youth involvement in crime. This visualisation provides a clear and interactive way to examine these trends by transforming complex crime data into an accessible, visual format. It allows users to compare offence rates between states, identify which types of offences are most prevalent among young people, and observe any regional disparities.
+      </p>
+    </div>
+
+    <!-- Map -->
+    <div class="section">
+      <h3>Youth Crimes Detected Across Australia</h3>
+      <div class="map-wrapper">
+        <div id="vis_map"></div>
+      </div>
+      <div class="two-column-text">
+        <div>
+          <p>
+            This map visualises the distribution of youth offences detected across Australian <strong>states and
+              territories</strong>, showing the <strong>number of youth offenders</strong> by <strong>offence
+              type</strong> and location. Each state is represented according to the level and type of youth crime
+            recorded, allowing for easy comparison across regions.
+          </p>
+          <p>
+            The data shows that offences such as Acts Intended to Cause Injury, Theft, and Public Order Offences are
+            the most frequently detected among young people, particularly in New South Wales, Queensland, and
+            Victoria. In contrast, serious offences like Homicide and Abduction/Harassment occur far less often and
+            are scattered across fewer states.
+          </p>
+        </div>
+        <div>
+          <p>
+            The overall map highlights that youth crime is most concentrated in the eastern states, with smaller
+            totals in the Northern Territory, South Australia, and the Australian Capital Territory, providing a clear
+            visual summary of where and which types of youth offences are most prominent across Australia.
+          </p>
+        </div>
       </div>
     </div>
 
-    <!-- Intro -->
-    <div class="pure-g section">
-      <div class="pure-u-1">
-        <h2>Introduction</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <!-- Line Chart -->
+    <div class="section line-two-col">
+      <h3>Youth Offenders by Age & Sex</h3>
+      <div class="line-text">
+        <p>
+          The line chart reveals a clear and consistent pattern in <strong>youth offender rates</strong> by
+          <strong>age</strong> and <strong>sex</strong> between 2022 and 2023. Offending behaviour increases sharply
+          with age for both males and females, peaking around mid- to late-adolescence. For <strong>males</strong>, the
+          offender rate climbs rapidly from <strong>197 per 100,000 at age 10</strong> to a peak of
+          <strong>4,354.9 per 100,000 at age 16</strong>, before slightly declining at age 17.
+          <strong>Females</strong> show a similar upward trend, though at much lower levels, rising from
+          <strong>66.3 per 100,000 at age 10</strong> to <strong>1,816.9 per 100,000 at age 14</strong>, followed by
+          moderate fluctuations through the later teenage years. Across all ages, male youth offenders significantly
+          outnumber females, indicating a persistent gender gap in offending patterns.
+        </p>
+        <p>
+          These results suggest that youth crime involvement intensifies through early adolescence; potentially linked
+          to social, socioeconomic, and peer influences, before stabilising as individuals approach adulthood. The
+          sharper escalation among males may reflect differences in behavioural risk factors, socialisation, and
+          exposure to criminogenic environments.
+        </p>
       </div>
-    </div>
-
-    <!-- Map FIRST -->
-    <div class="pure-g section">
-      <div class="pure-u-1">
-        <h3>Youth Crimes detected across Australia (Map)</h3>
-        <div id="vis_map" class="vis-container"></div>
-      </div>
-    </div>
-
-    <!-- Line Chart  -->
-    <div class="pure-g section">
-      <div class="pure-u-1">
-        <h3>Youth Offenders by Age & Sex</h3>
+      <div class="line-viz">
         <div id="vis_line" class="vis-container"></div>
       </div>
     </div>
 
-    <!-- Stacked Bar Chart  -->
-    <div class="pure-g section">
-      <div class="pure-u-1">
-        <h3>Youth Offenders Detention Rate </h3>
+    <!-- Stacked Bar Chart -->
+    <div class="section chart-text-container">
+      <div class="chart">
+        <h3>Youth Offenders Detention Rate</h3>
         <div id="vis_bar" class="vis-container"></div>
+      </div>
+      <div class="chart-description">
+        <p>
+          Notably, there is a stark disparity in youth detention rates between <strong>Aboriginal and Torres Strait
+            Islander</strong> and <strong>Non-Indigenous</strong> populations across Australian states and territories.
+          Overall, Aboriginal and Torres Strait Islander youths are detained at significantly higher rates in every
+          jurisdiction. The highest detention rates are observed in Queensland (46.0 per 10,000) and the Northern
+          Territory (42.9 per 10,000), followed closely by Western Australia and the Australian Capital Territory (both
+          at 34.6 per 10,000).
+        </p>
+        <p>
+          In contrast, Victoria and Tasmania record comparatively lower rates, though these figures remain many times
+          higher than those of Non-Indigenous youths. Across all states, Non-Indigenous youth detention rates remain
+          consistently low, <strong>below 2.5 per 10,000</strong>, illustrating a persistent and
+          <strong>systemic over-representation of Aboriginal and Torres Strait Islander youths in detention</strong>.
+          This pattern underscores enduring inequalities in the justice system and reflects broader social, economic,
+          and cultural disadvantages experienced by Indigenous communities nationwide.
+        </p>
       </div>
     </div>
 
-    <!-- Scatter chart -->
-    <div class="pure-g section">
-      <div class="pure-u-1">
-        <h3>Socioeconomic Advantage vs Youth Offence Rate </h3>
+    <!-- Scatter Plot -->
+    <div class="section">
+      <h3>Socioeconomic Advantage vs Youth Offence Rate</h3>
+      <div class="scatter-wrapper">
         <div id="vis_scatter" class="vis-container"></div>
       </div>
+      <p>
+        The scatter plot visualisation highlights a negative correlation between socioeconomic advantage (measured by
+        SEIFA) and youth offence rates across Australian states and territories. States with
+        <strong>lower average SEIFA scores</strong>, such as the Northern Territory (875) and Queensland (963), record
+        the <strong>highest youth offence rates</strong> (2855 and 1863 per 100,000 youths respectively). In contrast,
+        states with <strong>higher SEIFA scores</strong>, notably the Australian Capital Territory (1,089) and Victoria
+        (997), show substantially <strong>lower offence rates</strong> (528.9 and 1,126.6 per 100,000 youths).
+      </p>
+      <p>
+        This pattern suggests that regions with <strong>greater socioeconomic disadvantage tend to experience higher
+          levels of youth offending</strong>, reflecting the influence of structural inequality, limited educational and
+        employment opportunities, and social marginalisation on crime involvement. The trend reinforces criminological
+        theories linking socioeconomic stressors to delinquency and demonstrates how youth justice outcomes are strongly
+        shaped by broader social and economic conditions across Australia.
+      </p>
     </div>
   </div>
 
-  <!-- Embed scripts AFTER the containers exist -->
+  <div class="credit-box">
+      <h3>Metadata and Credits</h3>
+      <p><strong>Author:</strong> Anna Nguyen</p>
+      <p><strong>Project Title:</strong> Youth Crime in Australia</p>
+      <p><strong>Date Created:</strong> October 2025</p>
+
+      <h4>Data Sources</h4>
+      <ul>
+        <li>Australian Bureau of Statistics (ABS) – Recorded Crime: Offenders, 2022–23</li>
+        <li>Australian Institute of Health and Welfare (AIHW) – Youth Justice in Australia 2023</li>
+        <li>Socio-Economic Indexes for Areas (SEIFA), ABS 2021</li>
+      </ul>
+  </div>
+
+
+
+
+
+  <!-- Embed scripts -->
   <script>
-    const MAP_SPEC     = "js/map.vg.json";                       // map spec
-    const SCATTER_SPEC = "youthcrime_socioeconomic.json";        // scatter spec
-    const LINE_SPEC    = "js/linechart.vg.json";                // line spec
-    const BAR_SPEC = "js/stackedbarchart.vg.json";         // stacked bar chart spec
+    const MAP_SPEC = "js/map.vg.json";
+    const SCATTER_SPEC = "js/scatter.vg.json";
+    const LINE_SPEC = "js/linechart.vg.json";
+    const BAR_SPEC = "js/stackedbarchart.vg.json";
 
-    // Embed each chart 
-    vegaEmbed("#vis_map", MAP_SPEC, { actions: false })
-      .then(() => console.log("Map rendered"))
-      .catch(err => console.error("Map error:", err));
-
-    vegaEmbed("#vis_scatter", SCATTER_SPEC, { actions: false })
-      .then(() => console.log("Scatter rendered"))
-      .catch(err => console.error("Scatter error:", err));
-
-    vegaEmbed("#vis_line", LINE_SPEC, { actions: false })
-      .then(() => console.log("Line rendered"))
-      .catch(err => console.error("Line error:", err));
-
-    vegaEmbed("#vis_bar", STACKED_SPEC, { actions: false })
-      .then(() => console.log("Bar rendered"))
-      .catch(err => console.error("Bar error:", err));  
+    vegaEmbed("#vis_map", MAP_SPEC, { actions: false });
+    vegaEmbed("#vis_line", LINE_SPEC, { actions: false });
+    vegaEmbed("#vis_bar", BAR_SPEC, { actions: false });
+    vegaEmbed("#vis_scatter", SCATTER_SPEC, { actions: false });
   </script>
 </body>
 </html>
+
+

@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Relationship between socioeconomic advantage (SEIFA score) and youth offence rates across Australian states.",
-    "width": 600,
+    "width": 650,
   "height": 400,
   "title": {
     "text": "Youth Offence Rate vs. Socioeconomic Advantage (by State)",
